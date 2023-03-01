@@ -1,0 +1,2 @@
+# GeothermalStatisticGermany
+MongoDB Database
