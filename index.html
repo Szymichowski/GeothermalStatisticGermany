@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MongoDB Anbindung</title>
+  </head>
+  <body>
+    <h1>MongoDB Daten abrufen</h1>
+    <div id="results"></div>
+    
+    <script src="https://unpkg.com/mongodb@4.0.0-beta.0"></script>
+    <script>
+      const MongoClient = mongodb.MongoClient;
+      const uri = "mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority";
+      const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      
+      client.connect(err => {
+        const collection = client.db("test").collection("devices");
+        collection.find({}).toArray((err, docs) => {
+          if (err) throw err;
+          const resultsDiv = document.getElementById("results");
+          for (let i = 0; i < docs.length; i++) {
+            const doc = docs[i];
+            const result = document.createElement("p");
+            result.innerHTML = doc.name;
+            resultsDiv.appendChild(result);
+          }
+        });
+        client.close();
+      });
+    </script>
+  </body>
+</html>
