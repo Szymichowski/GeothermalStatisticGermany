@@ -1,0 +1,21 @@
+
+
+.div1 
+{
+
+    float: left;
+    width: 50%;
+    display: block;
+    text-align: center;
+    border: 1px solid black;
+
+}
+
+.div2 
+{
+
+    display: block;
+    text-align: center;
+    border: 1px solid black;
+
+}
